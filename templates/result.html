@@ -6,6 +6,31 @@
     <title>Hasil Enhancement</title>
   </head>
   <body>
-    
+    <div class="container">
+      <h2>Hasil Peningkatan Citra</h2>
+      <div class="image-container">
+        <div>
+          <p>Gambar Asli</p>
+          <img
+            src="{{ url_for('static', filename=original) }}"
+            alt="Original Image"
+          />
+        </div>
+        <div>
+          <p>Gambar Setelah Enhancement</p>
+          <img
+            src="{{ url_for('static', filename=result) }}"
+            alt="Enhanced Image"
+          />
+        </div>
+      </div>
+      <h3>Histogram Perbandingan</h3>
+      <img src="{{ url_for('static', filename=histogram) }}" alt="Histogram" />
+      <br />
+      <a href="{{ url_for('download') }}" class="btn btn-download"
+        >Download Gambar Hasil</a
+      >
+      <a href="{{ url_for('index') }}" class="btn btn-home">Kembali ke Home</a>
+    </div>
   </body>
 </html>
