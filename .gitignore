@@ -169,3 +169,24 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# File hasil upload
+uploads/
+
+# File gambar sementara atau cache
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.gif
+
+# Hasil debug/error log dari Flask
+error.log
+debug.log
+flask.log
+
+# Ignore file hasil pemrosesan gambar
+static/*.png
+static/*.jpg
+static/*.jpeg
+static/*.gif
