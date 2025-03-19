@@ -94,7 +94,7 @@ Aplikasi akan berjalan di `http://127.0.0.1:5000/`
 - **Reynaldo Dwi Septano Baru** - [Github Profile](https://github.com/username)
 - **Zacky Fiqran Kasmada** - [Github Profile](https://github.com/username)
 - **Fitri Nur Ramadhani** - [Github Profile](https://github.com/username)
-- **Siti Nur Aisyah Sea** - [Github Profile](https://github.com/username)
+- **Siti Nuraisyah Sea** - [Github Profile](https://github.com/username)
 
 ---
 
