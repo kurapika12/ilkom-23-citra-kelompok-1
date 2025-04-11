@@ -46,4 +46,15 @@ def index():
             percent_g = (total_g / total_all) * 100
             percent_r = (total_r / total_all) * 100
             
+            # Tentukan warna dominan
+            if total_r > total_g and total_r > total_b:
+                dominant_color = "Merah"
+                dominant_percent = percent_r
+            elif total_g > total_r and total_g > total_b:
+                dominant_color = "Hijau"
+                dominant_percent = percent_g
+            else:
+                dominant_color = "Biru"
+                dominant_percent = percent_b
+
             
