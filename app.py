@@ -21,3 +21,9 @@ def clear_static_folder():
     for f in files:
         os.remove(f)
 
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        clear_static_folder()
+        file = request.files["image"]
+        
