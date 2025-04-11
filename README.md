@@ -90,11 +90,11 @@ Aplikasi akan berjalan di `http://127.0.0.1:5000/`
 
 - **M. Aslam Hidayat** - [GitHub Profile](https://github.com/kurapika12)
 - **Abdul Mu'iz Azizul Raeba** - [Github Profile](https://github.com/username)
-- **Wa Ode Zahra Ramadhani** - [Github Profile](https://github.com/username)
-- **Reynaldo Dwi Septano Baru** - [Github Profile](https://github.com/username)
-- **Zacky Fiqran Kasmada** - [Github Profile](https://github.com/username)
+- **Wa Ode Zahra Ramadani** - [Github Profile](https://github.com/WaOdeZahraRamadani0410)
+- **Reynaldo Dwi Septano Baru** - [Github Profile](https://github.com/reyynald)
+- **Zacky Fiqran Kasmada** - [Github Profile](https://github.com/Zackyfiqran038)
 - **Fitri Nur Ramadhani** - [Github Profile](https://github.com/username)
-- **Siti Nur Aisyah Sea** - [Github Profile](https://github.com/username)
+- **Siti Nuraisyah Sea** - [Github Profile](https://github.com/username)
 
 ---
 
