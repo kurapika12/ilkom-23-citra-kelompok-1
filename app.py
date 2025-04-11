@@ -40,4 +40,10 @@ def index():
             total_g = np.sum(img[:,:,1])
             total_r = np.sum(img[:,:,2])
             
-           
+            # Hitung persentase
+            total_all = total_b + total_g + total_r
+            percent_b = (total_b / total_all) * 100
+            percent_g = (total_g / total_all) * 100
+            percent_r = (total_r / total_all) * 100
+            
+            
