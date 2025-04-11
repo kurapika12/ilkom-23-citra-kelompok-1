@@ -201,7 +201,7 @@
 
       fileInput.addEventListener('change', (e) => {
           if (fileInput.files.length) {
-              fileInfo.textContent = File dipilih: ${fileInput.files[0].name};
+              fileInfo.textContent = `File dipilih: ${fileInput.files[0].name}`;
           }
       });
 
@@ -224,7 +224,7 @@
 
           if (e.dataTransfer.files.length) {
               fileInput.files = e.dataTransfer.files;
-              fileInfo.textContent = File dipilih: ${e.dataTransfer.files[0].name};
+              fileInfo.textContent = 'File dipilih: ${e.dataTransfer.files[0].name}';
           }
       });
     </script>
