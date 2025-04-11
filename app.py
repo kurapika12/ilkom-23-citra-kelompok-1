@@ -8,3 +8,6 @@ import glob
 import matplotlib
 matplotlib.use("Agg")  # Untuk menghindari masalah GUI Matplotlib
 
+app = Flask(__name__)
+app.secret_key = "supersecretkey"
+
