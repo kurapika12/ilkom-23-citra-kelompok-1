@@ -57,4 +57,8 @@ def index():
                 dominant_color = "Biru"
                 dominant_percent = percent_b
 
+            # Buat histogram untuk masing-masing channel warna
+            colors = ('b', 'g', 'r')
+            channel_names = ('Blue', 'Green', 'Red')
+            
             
