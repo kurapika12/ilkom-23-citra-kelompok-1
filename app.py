@@ -35,18 +35,18 @@ def index():
             original_path = os.path.join(STATIC_FOLDER, "original.png")
             cv2.imwrite(original_path, img)
 
-            # Analisis warna dominan
+            # Untuk Analisis warna dominan
             total_b = np.sum(img[:,:,0])
             total_g = np.sum(img[:,:,1])
             total_r = np.sum(img[:,:,2])
             
-            # Hitung persentase
+            # Untuk Menghitung persentase
             total_all = total_b + total_g + total_r
             percent_b = (total_b / total_all) * 100
             percent_g = (total_g / total_all) * 100
             percent_r = (total_r / total_all) * 100
             
-            # Tentukan warna dominan
+            # Menentukan warna dominan
             if total_r > total_g and total_r > total_b:
                 dominant_color = "Merah"
                 dominant_percent = percent_r
@@ -57,11 +57,11 @@ def index():
                 dominant_color = "Biru"
                 dominant_percent = percent_b
 
-            # Buat histogram untuk masing-masing channel warna
+            # membuat histogram untuk masing-masing channel warna
             colors = ('b', 'g', 'r')
             channel_names = ('Blue', 'Green', 'Red')
             
-        # Buat 3 histogram terpisah
+        # membuat 3 histogram terpisah
             for i, (col, name) in enumerate(zip(colors, channel_names)):
                 plt.figure()
                 plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], color=col)
