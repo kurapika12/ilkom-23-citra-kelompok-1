@@ -16,3 +16,8 @@ STATIC_FOLDER = "static"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(STATIC_FOLDER, exist_ok=True)
 
+def clear_static_folder():
+    files = glob.glob(os.path.join(STATIC_FOLDER, "*"))
+    for f in files:
+        os.remove(f)
+
