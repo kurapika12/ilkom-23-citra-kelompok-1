@@ -88,3 +88,14 @@ def index():
 
     return render_template("index.html")
 
+@app.route("/result")
+def result():
+    return render_template("result.html",
+                           original=session.get("original"),
+                           histogram_blue=session.get("histogram_blue"),
+                           histogram_green=session.get("histogram_green"),
+                           histogram_red=session.get("histogram_red"),
+                           dominant_info=session.get("dominant_info", {}))
+
+if __name__ == "__main__":
+    app.run()           
