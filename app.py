@@ -35,4 +35,9 @@ def index():
             original_path = os.path.join(STATIC_FOLDER, "original.png")
             cv2.imwrite(original_path, img)
 
+            # Analisis warna dominan
+            total_b = np.sum(img[:,:,0])
+            total_g = np.sum(img[:,:,1])
+            total_r = np.sum(img[:,:,2])
             
+           
