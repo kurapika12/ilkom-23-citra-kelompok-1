@@ -6,7 +6,7 @@ import os
 import glob
 
 import matplotlib
-matplotlib.use("Agg")  # Untuk menghindari masalah GUI Matplotlib
+matplotlib.use("Agg")  #Tambahkan ini untuk menghindari masalah GUI Matplotlib
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -35,54 +35,36 @@ def index():
             original_path = os.path.join(STATIC_FOLDER, "original.png")
             cv2.imwrite(original_path, img)
 
-            # Analisis warna dominan
-            total_b = np.sum(img[:,:,0])
-            total_g = np.sum(img[:,:,1])
-            total_r = np.sum(img[:,:,2])
-            
-            # Hitung persentase
-            total_all = total_b + total_g + total_r
-            percent_b = (total_b / total_all) * 100
-            percent_g = (total_g / total_all) * 100
-            percent_r = (total_r / total_all) * 100
-            
-            # Tentukan warna dominan
-            if total_r > total_g and total_r > total_b:
-                dominant_color = "Merah"
-                dominant_percent = percent_r
-            elif total_g > total_r and total_g > total_b:
-                dominant_color = "Hijau"
-                dominant_percent = percent_g
+            if len(img.shape) == 2:
+                equalized_img = cv2.equalizeHist(img)
             else:
-                dominant_color = "Biru"
-                dominant_percent = percent_b
+                img_yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
+                img_yuv[:, :, 0] = cv2.equalizeHist(img_yuv[:, :, 0])
+                equalized_img = cv2.cvtColor(img_yuv, cv2.COLOR_YUV2BGR)
 
-            # Buat histogram untuk masing-masing channel warna
-            colors = ('b', 'g', 'r')
-            channel_names = ('Blue', 'Green', 'Red')
-            
-            # Buat 3 histogram terpisah
-            for i, (col, name) in enumerate(zip(colors, channel_names)):
-                plt.figure()
-                plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], color=col)
-                plt.title(f'Histogram Channel {name}')
-                plt.xlabel('Pixel Value')
-                plt.ylabel('Frequency')
-                hist_path = os.path.join(STATIC_FOLDER, f"histogram_{name.lower()}.png")
-                plt.savefig(hist_path)
-                plt.close()
+            result_path = os.path.join(STATIC_FOLDER, "equalized.png")
+            cv2.imwrite(result_path, equalized_img)
+
+            plt.figure()
+            if len(img.shape) == 2:
+                plt.hist(img.ravel(), bins=256, range=[0, 256], label='Original', alpha=0.7, color='black')
+                plt.hist(equalized_img.ravel(), bins=256, range=[0, 256], label='Equalized', alpha=0.7, color='red')
+            else:
+                colors = ('b', 'g', 'r')
+                for i, col in enumerate(colors):
+                    plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], label=f'Original {col.upper()}', alpha=0.5, color=col)
+                    plt.hist(equalized_img[:, :, i].ravel(), bins=256, range=[0, 256], label=f'Equalized {col.upper()}', alpha=0.5, linestyle='dashed')
+            plt.legend()
+            plt.xlabel('Pixel Value')
+            plt.ylabel('Frequency')
+            plt.title('Histogram Perbandingan')
+            hist_path = os.path.join(STATIC_FOLDER, "histogram.png")
+            plt.savefig(hist_path)
+            plt.close()
 
             session["original"] = "original.png"
-            session["histogram_blue"] = "histogram_blue.png"
-            session["histogram_green"] = "histogram_green.png"
-            session["histogram_red"] = "histogram_red.png"
-            session["dominant_info"] = {
-                "color": dominant_color,
-                "percent": round(dominant_percent, 2),
-                "blue": round(percent_b, 2),
-                "green": round(percent_g, 2),
-                "red": round(percent_r, 2)
-            }
+            session["result"] = "equalized.png"
+            session["histogram"] = "histogram.png"
 
             return redirect(url_for("result"))
 
@@ -92,10 +74,14 @@ def index():
 def result():
     return render_template("result.html",
                            original=session.get("original"),
-                           histogram_blue=session.get("histogram_blue"),
-                           histogram_green=session.get("histogram_green"),
-                           histogram_red=session.get("histogram_red"),
-                           dominant_info=session.get("dominant_info", {}))
+                           result=session.get("result"),
+                           histogram=session.get("histogram"))
+
+@app.route("/download")
+def download():
+    result_path = os.path.join(STATIC_FOLDER, "equalized.png")
+    return send_file(result_path, as_attachment=True)
 
 if __name__ == "__main__":
-    app.run()
+    # clear_static_folder()  --> Ini dihapus agar tidak menghapus gambar setiap restart
+    app.run()  # Hapus debug=True untuk menghindari masalah tkinter
