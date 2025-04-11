@@ -26,4 +26,9 @@ def index():
     if request.method == "POST":
         clear_static_folder()
         file = request.files["image"]
-        
+        if file:
+            filename = file.filename
+            filepath = os.path.join(UPLOAD_FOLDER, filename)
+            file.save(filepath)
+
+            
