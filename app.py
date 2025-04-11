@@ -31,4 +31,8 @@ def index():
             filepath = os.path.join(UPLOAD_FOLDER, filename)
             file.save(filepath)
 
+            img = cv2.imread(filepath)
+            original_path = os.path.join(STATIC_FOLDER, "original.png")
+            cv2.imwrite(original_path, img)
+
             
