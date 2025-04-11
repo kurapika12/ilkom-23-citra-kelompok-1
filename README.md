@@ -35,7 +35,7 @@ git clone https://github.com/kurapika12/ilkom-23-citra-kelompok-1.git
 cd ilkom-23-citra-kelompok-1
 ```
 
-### 2️⃣ **Buat dan Aktifkan Virtual Environment**
+### 2️⃣ **Buat dan Aktifkan Virtual Environment (opsional)**
 
 #### 💻 **Windows** (Command Prompt / PowerShell)
 
@@ -75,26 +75,25 @@ Aplikasi akan berjalan di `http://127.0.0.1:5000/`
 
 ## 📸 Contoh Penggunaan
 
-1. **Upload gambar asli**
-2. **Lihat histogram gambar asli**
-3. **Klik tombol "Enhance"** untuk menerapkan histogram equalization
-4. **Lihat perbandingan gambar sebelum & sesudah**
-5. **Download hasil gambar yang telah ditingkatkan**
+1. **Upload gambar** Pada halaman utama, klik area bertuliskan "Drag & drop gambar Anda di sini atau Pilih File".
+   Pilih gambar dengan format JPG, PNG, atau JPEG dari perangkat Anda. Setelah gambar dipilih, nama file akan muncul di bawah area upload.
+2. **Analisis Gambar** Klik tombol "Analisis Gambar" untuk mengunggah gambar dan memulai proses analisis warna RGB menggunakan histogram.
+3. **Lihat Gambar Asli dan Hasil Analisis** Setelah gambar dianalisis, Anda akan diarahkan ke halaman hasil. Di sana akan ditampilkan : Gambar asli yang Anda unggah Informasi warna dominan (merah, hijau, atau biru) beserta persentasenya
+4. **Kembali ke Halaman Upload** Setelah melihat hasil analisis, Anda bisa kembali ke halaman awal dengan mengklik tombol "Kembali ke Upload".
 
 ## 💡 Catatan
 
 - Pastikan gambar dalam format **JPG atau PNG** sebelum diunggah.
-- Aplikasi ini hanya mendukung **citra grayscale** untuk histogram equalization.
 
 ## ✨ Kontributor
 
 - **M. Aslam Hidayat** - [GitHub Profile](https://github.com/kurapika12)
-- **Abdul Mu'iz Azizul Raeba** - [Github Profile](https://github.com/username)
+- **Abdul Mu'iz Azizul Raeba** - [Github Profile](https://github.com/Coklatssss)
 - **Wa Ode Zahra Ramadani** - [Github Profile](https://github.com/WaOdeZahraRamadani0410)
 - **Reynaldo Dwi Septano Baru** - [Github Profile](https://github.com/reyynald)
 - **Zacky Fiqran Kasmada** - [Github Profile](https://github.com/Zackyfiqran038)
-- **Fitri Nur Ramadhani** - [Github Profile](https://github.com/username)
-- **Siti Nuraisyah Sea** - [Github Profile](https://github.com/username)
+- **Fitri Nur Ramadhani** - [Github Profile](https://github.com/Fitrinurramadhani79)
+- **Siti Nuraisyah Sea** - [Github Profile](https://github.com/acousticname00)
 
 ---
 
