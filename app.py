@@ -61,4 +61,41 @@ def index():
             colors = ('b', 'g', 'r')
             channel_names = ('Blue', 'Green', 'Red')
             
-            
+        # Buat 3 histogram terpisah
+            for i, (col, name) in enumerate(zip(colors, channel_names)):
+                plt.figure()
+                plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], color=col)
+                plt.title(f'Histogram Channel {name}')
+                plt.xlabel('Pixel Value')
+                plt.ylabel('Frequency')
+                hist_path = os.path.join(STATIC_FOLDER, f"histogram_{name.lower()}.png")
+                plt.savefig(hist_path)
+                plt.close()
+
+            session["original"] = "original.png"
+            session["histogram_blue"] = "histogram_blue.png"
+            session["histogram_green"] = "histogram_green.png"
+            session["histogram_red"] = "histogram_red.png"
+            session["dominant_info"] = {
+                "color": dominant_color,
+                "percent": round(dominant_percent, 2),
+                "blue": round(percent_b, 2),
+                "green": round(percent_g, 2),
+                "red": round(percent_r, 2)
+            }
+
+            return redirect(url_for("result"))
+
+    return render_template("index.html")
+
+@app.route("/result")
+def result():
+    return render_template("result.html",
+                           original=session.get("original"),
+                           histogram_blue=session.get("histogram_blue"),
+                           histogram_green=session.get("histogram_green"),
+                           histogram_red=session.get("histogram_red"),
+                           dominant_info=session.get("dominant_info", {}))
+
+if __name__ == "__main__":
+    app.run()           
