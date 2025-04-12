@@ -184,9 +184,3 @@ uploads/
 error.log
 debug.log
 flask.log
-
-# Ignore file hasil pemrosesan gambar
-static/*.png
-static/*.jpg
-static/*.jpeg
-static/*.gif
