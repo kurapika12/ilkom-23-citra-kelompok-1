@@ -166,10 +166,10 @@
       }
 
       .red-dot {
-        background-color: #f72585;
+        background-color: #ff0000;
       }
       .green-dot {
-        background-color: #4cc9f0;
+        background-color: #00ff1a;
       }
       .blue-dot {
         background-color: #4361ee;
@@ -295,6 +295,31 @@
           </div>
         </div>
       </div>
+
+      <!-- Add this where you display the dominant color information -->
+{% if dominant_info.is_greyscale %}
+<div class="greyscale-notice">
+    <h3>Foto Greyscale Terdeteksi</h3>
+    <p>Foto ini tidak memiliki warna dominan karena merupakan gambar greyscale (hitam putih).</p>
+    <img src="{{ url_for('static', filename=histogram_greyscale) }}" alt="Greyscale Histogram">
+</div>
+{% else %}
+<div class="color-result">
+    <h3>Hasil Analisis Warna</h3>
+    <p>Warna dominan: <strong>{{ dominant_info.color }}</strong> ({{ dominant_info.percent }}%)</p>
+    <p>Persentase Warna:</p>
+    <ul>
+        <li>Merah: {{ dominant_info.red }}%</li>
+        <li>Hijau: {{ dominant_info.green }}%</li>
+        <li>Biru: {{ dominant_info.blue }}%</li>
+    </ul>
+    <div class="histograms">
+        <img src="{{ url_for('static', filename=histogram_red) }}" alt="Red Histogram">
+        <img src="{{ url_for('static', filename=histogram_green) }}" alt="Green Histogram">
+        <img src="{{ url_for('static', filename=histogram_blue) }}" alt="Blue Histogram">
+    </div>
+</div>
+{% endif %}
 
       <div class="histograms">
         <div class="histogram-card">
