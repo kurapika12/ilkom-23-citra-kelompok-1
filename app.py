@@ -12,7 +12,7 @@ app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
 UPLOAD_FOLDER = "uploads"
-STATIC_FOLDER = "assets"
+STATIC_FOLDER = "static"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(STATIC_FOLDER, exist_ok=True)
 
