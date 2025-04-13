@@ -7,3 +7,11 @@ import glob
 
 import matplotlib
 matplotlib.use("Agg")  # Untuk menghindari masalah GUI Matplotlib
+
+app = Flask(__name__)
+app.secret_key = "supersecretkey"
+
+UPLOAD_FOLDER = "uploads"
+STATIC_FOLDER = "static"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs(STATIC_FOLDER, exist_ok=True)
