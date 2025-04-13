@@ -222,3 +222,10 @@ fileLabel.addEventListener("click", (e) => {
   e.stopPropagation(); // Menghentikan event bubbling ke uploadArea
 });
 
+// 3. Handle perubahan file
+fileInput.addEventListener("change", (e) => {
+  if (fileInput.files.length) {
+    fileInfo.textContent = `File dipilih: ${fileInput.files[0].name}`;
+  }
+});
+
