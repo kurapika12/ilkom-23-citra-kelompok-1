@@ -337,4 +337,13 @@
           </div>
     
           <!-- Add this where you display the dominant color information -->
- 
+          {% if dominant_info.is_greyscale %}
+          <div class="greyscale-notice">
+            <h3>Foto Greyscale Terdeteksi</h3>
+            <p>
+              Foto ini tidak memiliki warna dominan karena merupakan gambar
+              greyscale (hitam putih).
+            </p>
+            <img
+              src="{{ url_for('static', filename=histogram_greyscale) }}"
+              alt="Greyscale Histogram"
