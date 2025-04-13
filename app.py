@@ -32,3 +32,13 @@ def is_greyscale(img):
     if np.allclose(b, g) and np.allclose(b, r):
         return True
     return False
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        clear_static_folder()
+        file = request.files["image"]
+        if file:
+            filename = file.filename
+            filepath = os.path.join(UPLOAD_FOLDER, filename)
+            file.save(filepath)
