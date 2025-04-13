@@ -59,4 +59,14 @@ def index():
                     "red": 0,
                     "is_greyscale": True
                 }
-                       
+    
+                # Create histogram for greyscale image
+                plt.figure()
+                plt.hist(img.ravel(), bins=256, range=[0, 256], color='gray')
+                plt.title('Histogram Greyscale')
+                plt.xlabel('Pixel Value')
+                plt.ylabel('Frequency')
+                hist_path = os.path.join(STATIC_FOLDER, "histogram_greyscale.png")
+                plt.savefig(hist_path)
+                plt.close()
+                                   
