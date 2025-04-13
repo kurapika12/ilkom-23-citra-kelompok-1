@@ -153,3 +153,91 @@ footer {
   h1 {
     font-size: 2rem;
   }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Analisis Warna RGB menggunakan Histogram</h1>
+  <p class="subtitle">
+    Upload gambar untuk menganalisis distribusi warna RGB
+  </p>
+</header>
+
+<div class="upload-card">
+  <form method="post" enctype="multipart/form-data" id="uploadForm">
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">📊</div>
+      <p>Drag & drop gambar Anda di sini atau</p>
+      <label for="image" class="file-label" id="fileLabel"
+        >Pilih File</label
+      >
+      <input
+        type="file"
+        name="image"
+        id="image"
+        class="file-input"
+        accept="image/*"
+        required
+      />
+      <div class="file-info" id="fileInfo">
+        Format yang didukung: JPG, PNG, JPEG
+      </div>
+    </div>
+    <button type="submit" class="submit-btn" id="submitBtn">
+      Analisis Gambar
+    </button>
+  </form>
+</div>
+
+<footer>
+  <p>© 2023 RGB Histogram Analyzer | Kelompok 1</p>
+</footer>
+</div>
+
+<script>
+// JavaScript untuk menangani upload file
+const uploadArea = document.getElementById("uploadArea");
+const fileInput = document.getElementById("image");
+const fileInfo = document.getElementById("fileInfo");
+const uploadForm = document.getElementById("uploadForm");
+const submitBtn = document.querySelector(".submit-btn");
+
+// 1. Hilangkan event click dari uploadArea
+uploadArea.addEventListener("click", (e) => {
+  // Biarkan hanya label yang menangani klik
+  if (
+    e.target === uploadArea ||
+    e.target.classList.contains("upload-icon") ||
+    e.target.tagName === "P"
+  ) {
+    fileInput.click();
+  }
+});
+
+// 2. Pastikan label tidak memicu dua kali
+const fileLabel = document.querySelector(".file-label");
+fileLabel.addEventListener("click", (e) => {
+  e.stopPropagation(); // Menghentikan event bubbling ke uploadArea
+});
+
+// 3. Handle perubahan file
+fileInput.addEventListener("change", (e) => {
+  if (fileInput.files.length) {
+    fileInfo.textContent = `File dipilih: ${fileInput.files[0].name}`;
+  }
+});
+
+// 4. Drag and drop functionality
+uploadArea.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  uploadArea.style.borderColor = "#4361ee";
+  uploadArea.style.backgroundColor = "rgba(67, 97, 238, 0.05)";
+});
+
+uploadArea.addEventListener("dragleave", () => {
+  uploadArea.style.borderColor = "#dee2e6";
+  uploadArea.style.backgroundColor = "transparent";
+});
+
