@@ -128,4 +128,14 @@ def index():
             return redirect(url_for("result"))
 
     return render_template("index.html")
-                                   
+ 
+@app.route("/result")
+def result():
+    return render_template("result.html",
+                           original=session.get("original"),
+                           histogram_blue=session.get("histogram_blue", None),
+                           histogram_green=session.get("histogram_green", None),
+                           histogram_red=session.get("histogram_red", None),
+                           histogram_greyscale=session.get("histogram_greyscale", None),
+                           dominant_info=session.get("dominant_info", {}))
+                                  
