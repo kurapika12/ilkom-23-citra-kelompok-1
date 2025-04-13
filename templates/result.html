@@ -297,3 +297,13 @@
         <div class="results-section">
           <div class="main-image">
             <h2><i clas"fas fa-image"></i> Gambar Asli</h2>
+            <img
+              src="{{ url_for('static', filename=original) }}"
+              alt="Original Image"
+            />
+          </div>
+  
+          <div class="conclusion-card">
+            <h2><i class="fas fa-chart-pie"></i> Kesimpulan Warna Dominan</h2>
+            <div class="dominant-color">
+              Warna dominan: <strong>{{ dominant_info.color }}</strong>
