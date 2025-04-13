@@ -18,3 +18,245 @@
             --success: #4cc9f0;
             --danger: #f72585;
           }
+          
+    
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          
+          body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+          }
+          
+          .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+          }
+          
+          header {
+            text-align: center;
+            margin-bottom: 2rem;
+          }
+          
+          h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+          }
+          
+          .subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+          }
+          
+          .upload-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+          }
+    
+          .upload-card:hover {
+            transform: translateY(-5px);
+          }
+    
+    .upload-area {
+      border: 2px dashed #dee2e6;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+.upload-area:hover {
+  border-color: var(--accent);
+  background-color: rgba(72, 149, 239, 0.05);
+}
+
+.upload-icon {
+  font-size: 3rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: inline-block;
+  background-color: var(--primary);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+}
+
+.file-label:hover {
+  background-color: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(67, 97, 238, 0.3);
+}
+
+.submit-btn {
+  background-color: var(--success);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(76, 201, 240, 0.2);
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: #3aa8d8;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(76, 201, 240, 0.3);
+}
+
+.file-info {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+  <h1>Analisis Warna RGB menggunakan Histogram</h1>
+  <p class="subtitle">
+    Upload gambar untuk menganalisis distribusi warna RGB
+  </p>
+</header>
+
+<div class="upload-card">
+  <form method="post" enctype="multipart/form-data" id="uploadForm">
+    <div class="upload-area" id="uploadArea">
+      <div class="upload-icon">📊</div>
+      <p>Drag & drop gambar Anda di sini atau</p>
+      <label for="image" class="file-label" id="fileLabel"
+        >Pilih File</label
+      >
+      <input
+        type="file"
+        name="image"
+        id="image"
+        class="file-input"
+        accept="image/*"
+        required
+      />
+      <div class="file-info" id="fileInfo">
+        Format yang didukung: JPG, PNG, JPEG
+      </div>
+    </div>
+    <button type="submit" class="submit-btn" id="submitBtn">
+      Analisis Gambar
+    </button>
+  </form>
+</div>
+
+<footer>
+  <p>© 2023 RGB Histogram Analyzer | Kelompok 1</p>
+</footer>
+</div>
+
+<script>
+// JavaScript untuk menangani upload file
+const uploadArea = document.getElementById("uploadArea");
+const fileInput = document.getElementById("image");
+const fileInfo = document.getElementById("fileInfo");
+const uploadForm = document.getElementById("uploadForm");
+const submitBtn = document.querySelector(".submit-btn");
+
+// 1. Hilangkan event click dari uploadArea
+uploadArea.addEventListener("click", (e) => {
+  // Biarkan hanya label yang menangani klik
+  if (
+    e.target === uploadArea ||
+    e.target.classList.contains("upload-icon") ||
+    e.target.tagName === "P"
+  ) {
+    fileInput.click();
+  }
+});
+
+// 2. Pastikan label tidak memicu dua kali
+const fileLabel = document.querySelector(".file-label");
+fileLabel.addEventListener("click", (e) => {
+  e.stopPropagation(); // Menghentikan event bubbling ke uploadArea
+});
+
+// 3. Handle perubahan file
+fileInput.addEventListener("change", (e) => {
+  if (fileInput.files.length) {
+    fileInfo.textContent = `File dipilih: ${fileInput.files[0].name}`;
+  }
+});
+
+// 4. Drag and drop functionality
+uploadArea.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  uploadArea.style.borderColor = "#4361ee";
+  uploadArea.style.backgroundColor = "rgba(67, 97, 238, 0.05)";
+});
+
+uploadArea.addEventListener("dragleave", () => {
+  uploadArea.style.borderColor = "#dee2e6";
+  uploadArea.style.backgroundColor = "transparent";
+});
+
+uploadArea.addEventListener("drop", (e) => {
+  e.preventDefault();
+  uploadArea.style.borderColor = "#dee2e6";
+  uploadArea.style.backgroundColor = "transparent";
+
+  if (e.dataTransfer.files.length) {
+    fileInput.files = e.dataTransfer.files;
+    fileInfo.textContent = `File dipilih: ${e.dataTransfer.files[0].name}`;
+  }
+});
+
+// 5. Cegah double submit
+uploadForm.addEventListener("submit", function (e) {
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Memproses...";
+});
+</script>
+</body>
+</html>
