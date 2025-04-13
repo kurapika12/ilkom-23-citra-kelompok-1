@@ -347,68 +347,69 @@
             <img
               src="{{ url_for('static', filename=histogram_greyscale) }}"
               alt="Greyscale Histogram"
+            />
+          </div>
+          {% else %}
+          <div class="color-result">
+            <h3>Hasil Analisis Warna</h3>
+            <p>
+              Warna dominan: <strong>{{ dominant_info.color }}</strong> ({{
+              dominant_info.percent }}%)
+            </p>
+            <p>Persentase Warna:</p>
+            <ul>
+              <li>Merah: {{ dominant_info.red }}%</li>
+              <li>Hijau: {{ dominant_info.green }}%</li>
+              <li>Biru: {{ dominant_info.blue }}%</li>
+            </ul>
+          </div>
+          {% endif %}
+    
+          <div class="histograms">
+            <div class="histogram-card">
+              <h2>
+                <i class="fas fa-water" style="color: #4361ee"></i> Histogram Blue
+                Channel
+              </h2>
+              <img
+                src="{{ url_for('static', filename=histogram_blue) }}"
+                alt="Blue Channel Histogram"
               />
             </div>
-            {% else %}
-            <div class="color-result">
-              <h3>Hasil Analisis Warna</h3>
-              <p>
-                Warna dominan: <strong>{{ dominant_info.color }}</strong> ({{
-                dominant_info.percent }}%)
-              </p>
-              <p>Persentase Warna:</p>
-              <ul>
-                <li>Merah: {{ dominant_info.red }}%</li>
-                <li>Hijau: {{ dominant_info.green }}%</li>
-                <li>Biru: {{ dominant_info.blue }}%</li>
-              </ul>
+    
+            <div class="histogram-card">
+              <h2>
+                <i class="fas fa-leaf" style="color: #05f474"></i> Histogram Green
+                Channel
+              </h2>
+              <img
+                src="{{ url_for('static', filename=histogram_green) }}"
+                alt="Green Channel Histogram"
+              />
             </div>
-            {% endif %}
-      
-            <div class="histograms">
-              <div class="histogram-card">
-                <h2>
-                  <i class="fas fa-water" style="color: #4361ee"></i> Histogram Blue
-                  Channel
-                </h2>
-                <img
-                  src="{{ url_for('static', filename=histogram_blue) }}"
-                  alt="Blue Channel Histogram"
-                />
-              </div>
-      
-              <div class="histogram-card">
-                <h2>
-                  <i class="fas fa-leaf" style="color: #05f474"></i> Histogram Green
-                  Channel
-                </h2>
-                <img
-                  src="{{ url_for('static', filename=histogram_green) }}"
-                  alt="Green Channel Histogram"
-                />
-              </div>
-      
-              <div class="histogram-card">
-                <h2>
-                  <i class="fas fa-fire" style="color: #f72585"></i> Histogram Red
-                  Channel
-                </h2>
-                <img
-                  src="{{ url_for('static', filename=histogram_red) }}"
-                  alt="Red Channel Histogram"
-                />
-              </div>
+    
+            <div class="histogram-card">
+              <h2>
+                <i class="fas fa-fire" style="color: #f72585"></i> Histogram Red
+                Channel
+              </h2>
+              <img
+                src="{{ url_for('static', filename=histogram_red) }}"
+                alt="Red Channel Histogram"
+              />
             </div>
-      
-            <div style="text-align: center">
-              <a href="/" class="btn-back"
-                ><i class="fas fa-arrow-left"></i> Kembali ke Upload</a
-                >
-              </div>
-        
-              <footer>
-                <p>© 2023 RGB Histogram Analyzer | All rights reserved</p>
-              </footer>
-            </div>
-          </body>
-       
+          </div>
+    
+          <div style="text-align: center">
+            <a href="/" class="btn-back"
+              ><i class="fas fa-arrow-left"></i> Kembali ke Upload</a
+            >
+          </div>
+    
+          <footer>
+            <p>© 2023 RGB Histogram Analyzer | All rights reserved</p>
+          </footer>
+        </div>
+      </body>
+    </html>
+    
