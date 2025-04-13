@@ -15,15 +15,34 @@ Proyek ini adalah aplikasi berbasis web yang menggunakan **Flask** dan **OpenCV*
 ## 📂 Struktur Folder
 
 ```
-/ilkom-23-citra-kelompok-1
-│── static/              # Folder untuk file statis (hasil gambar)
-│── templates/           # Folder untuk file HTML
-│── uploads/             # Folder penyimpanan gambar yang diunggah
-│── venv/                # Virtual environment (jangan di-push ke Git)
-│── .gitignore           # File untuk mengabaikan file tertentu dalam Git
-│── app.py               # Main backend Flask app
-│── README.md            # Dokumentasi proyek ini
-│── requirements.txt     # Daftar dependensi proyek
+ILKOM-23-CITRA-KELOMPOK-1/
+│
+├── app/
+│   ├── __pycache__/
+│   ├── static/
+│   │   ├── script.js
+│   │   ├── style.css
+│   │   └── styles.css
+│   │
+│   ├── templates/
+│   │   ├── index.html
+│   │   └── result.html
+│   │
+│   ├── uploads/
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── utils.py
+│
+├── img/
+│   ├── HalamanAwal.png
+│   └── HalamanHasil.png
+│
+├── venv/                   # Tempat semua package Python buat proyek ini disimpan. 📌 Jangan diutak-atik, cukup aktifkan aja (Jika Perlu)
+│
+├── .gitignore
+├── README.md
+├── requirements.txt
+└── run.py
 ```
 
 ## 🔧 Cara Instalasi dan Menjalankan
