@@ -65,10 +65,18 @@ python app.py
 
 Aplikasi akan berjalan di `http://127.0.0.1:5000/`
 
+## Tampilan Aplikasi
+
+**CONTOH HALAMAN UTAMA**
+![Halaman Awal](img/HalamanAwal.png)
+**CONTOH HALAMAN HASIL**
+![Halaman Hasil](img/HalamanHasil.png)
+
+
 ## ⚙️ Fitur Utama
 
 ✅ **Upload Gambar** - Pengguna bisa mengunggah gambar berformat JPG/PNG.<br>
-✅ **Tampilkan Histogram** - Histogram gambar asli bisa ditampilkan.<br>
+✅ **Tampilan Histogram** - Histogram gambar asli bisa ditampilkan.<br>
 ✅ **Analisis Warna Dominan** - Menampilkan warna dominan dan persentasenya.<br>
 ✅ **Perbandingan hasil histogram** - Menampilkan hasil grafik histogram
 
