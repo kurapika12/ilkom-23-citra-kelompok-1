@@ -106,4 +106,15 @@ def index():
                 # membuat histogram untuk masing-masing channel warna
                 colors = ('b', 'g', 'r')
                 channel_names = ('Blue', 'Green', 'Red')
+   
+                # membuat 3 histogram terpisah
+                for i, (col, name) in enumerate(zip(colors, channel_names)):
+                    plt.figure()
+                    plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], color=col)
+                    plt.title(f'Histogram Channel {name}')
+                    plt.xlabel('Pixel Value')
+                    plt.ylabel('Frequency')
+                    hist_path = os.path.join(STATIC_FOLDER, f"histogram_{name.lower()}.png")
+                    plt.savefig(hist_path)
+                    plt.close()
                                     
