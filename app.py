@@ -138,4 +138,6 @@ def result():
                            histogram_red=session.get("histogram_red", None),
                            histogram_greyscale=session.get("histogram_greyscale", None),
                            dominant_info=session.get("dominant_info", {}))
-                                  
+ 
+if __name__ == "__main__":
+    app.run()                                 
