@@ -229,3 +229,9 @@ fileInput.addEventListener("change", (e) => {
   }
 });
 
+// 4. Drag and drop functionality
+uploadArea.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  uploadArea.style.borderColor = "#4361ee";
+  uploadArea.style.backgroundColor = "rgba(67, 97, 238, 0.05)";
+});
