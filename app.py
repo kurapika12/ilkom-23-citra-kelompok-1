@@ -49,4 +49,14 @@ def index():
 
             # Check if image is greyscale
             greyscale = is_greyscale(img)
-            
+  
+            if greyscale:
+                dominant_info = {
+                    "color": "Greyscale",
+                    "percent": 100,
+                    "blue": 0,
+                    "green": 0,
+                    "red": 0,
+                    "is_greyscale": True
+                }
+                       
