@@ -6,7 +6,7 @@ import os
 import glob
 
 import matplotlib
-matplotlib.use("Agg")  # Untuk menghindari masalah GUI Matplotlib
+matplotlib.use("Agg")  # Untuk menghindari masalah GUI Matplotlib 
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
@@ -22,13 +22,13 @@ def clear_static_folder():
         os.remove(f)
 
 def is_greyscale(img):
-    # Check if image is greyscale by comparing color channels
+    # Check if image is greyscale by comparing color channels 
     if len(img.shape) < 3:
         return True
     if img.shape[2] == 1:
         return True
     b, g, r = img[:,:,0], img[:,:,1], img[:,:,2]
-    # If all channels are equal, it's greyscale
+    # If all channels are equal, it's greyscale 
     if np.allclose(b, g) and np.allclose(b, r):
         return True
     return False
@@ -47,7 +47,7 @@ def index():
             original_path = os.path.join(STATIC_FOLDER, "original.png")
             cv2.imwrite(original_path, img)
 
-            # Check if image is greyscale
+            # Check if image is greyscale 
             greyscale = is_greyscale(img)
   
             if greyscale:
@@ -60,7 +60,7 @@ def index():
                     "is_greyscale": True
                 }
     
-                # Create histogram for greyscale image
+                # Create histogram for greyscale image 
                 plt.figure()
                 plt.hist(img.ravel(), bins=256, range=[0, 256], color='gray')
                 plt.title('Histogram Greyscale')
@@ -72,18 +72,18 @@ def index():
                    
                 session["histogram_greyscale"] = "histogram_greyscale.png"
             else:
-                # Untuk Analisis warna dominan
+                # Untuk Analisis warna dominan 
                 total_b = np.sum(img[:,:,0])
                 total_g = np.sum(img[:,:,1])
                 total_r = np.sum(img[:,:,2])
    
-                # Untuk Menghitung persentase
+                # Untuk Menghitung persentase 
                 total_all = total_b + total_g + total_r
                 percent_b = (total_b / total_all) * 100
                 percent_g = (total_g / total_all) * 100
                 percent_r = (total_r / total_all) * 100
    
-                # Menentukan warna dominan
+                # Menentukan warna dominan 
                 if total_r > total_g and total_r > total_b:
                     dominant_color = "Merah"
                     dominant_percent = percent_r
@@ -103,11 +103,11 @@ def index():
                     "is_greyscale": False
                 }
  
-                # membuat histogram untuk masing-masing channel warna
+                # membuat histogram untuk masing-masing channel warna  
                 colors = ('b', 'g', 'r')
                 channel_names = ('Blue', 'Green', 'Red')
    
-                # membuat 3 histogram terpisah
+                # membuat 3 histogram terpisah 
                 for i, (col, name) in enumerate(zip(colors, channel_names)):
                     plt.figure()
                     plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], color=col)

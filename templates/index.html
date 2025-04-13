@@ -198,16 +198,16 @@ footer {
 </div>
 
 <script>
-// JavaScript untuk  upload file 
+// JavaScript untuk  upload file
 const uploadArea = document.getElementById("uploadArea");
 const fileInput = document.getElementById("image");
 const fileInfo = document.getElementById("fileInfo");
 const uploadForm = document.getElementById("uploadForm");
 const submitBtn = document.querySelector(".submit-btn");
 
-// 1. Hilangkan event click dari uploadArea 
+// 1. Hilangkan event click dari uploadArea  
 uploadArea.addEventListener("click", (e) => {
-  // Biarkan hanya label yang menangani klik 
+  // Biarkan hanya label yang menangani klik  
   if (
     e.target === uploadArea ||
     e.target.classList.contains("upload-icon") ||
@@ -217,20 +217,20 @@ uploadArea.addEventListener("click", (e) => {
   }
 });
 
-// 2. Pastikan label tidak memicu dua kali 
+// 2. Pastikan label tidak memicu dua kali  
 const fileLabel = document.querySelector(".file-label");
 fileLabel.addEventListener("click", (e) => {
-  e.stopPropagation(); // Menghentikan event bubbling ke uploadArea
+  e.stopPropagation(); // Menghentikan event bubbling ke uploadArea 
 });
 
-// 3. Handle perubahan file 
+// 3. Handle perubahan file
 fileInput.addEventListener("change", (e) => {
   if (fileInput.files.length) {
     fileInfo.textContent = `File dipilih: ${fileInput.files[0].name}`;
   }
 });
 
-// 4. Drag and drop functionality
+// 4. Drag and drop functionality 
 uploadArea.addEventListener("dragover", (e) => {
   e.preventDefault();
   uploadArea.style.borderColor = "#4361ee";
@@ -253,7 +253,7 @@ uploadArea.addEventListener("drop", (e) => {
   }
 });
 
-// 5. Cegah double submit 
+// 5. Cegah double submit
 uploadForm.addEventListener("submit", function (e) {
   submitBtn.disabled = true;
   submitBtn.textContent = "Memproses...";
