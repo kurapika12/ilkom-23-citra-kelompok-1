@@ -69,4 +69,11 @@ def index():
                 hist_path = os.path.join(STATIC_FOLDER, "histogram_greyscale.png")
                 plt.savefig(hist_path)
                 plt.close()
-                                   
+                   
+                session["histogram_greyscale"] = "histogram_greyscale.png"
+            else:
+                # Untuk Analisis warna dominan
+                total_b = np.sum(img[:,:,0])
+                total_g = np.sum(img[:,:,1])
+                total_r = np.sum(img[:,:,2])
+             
