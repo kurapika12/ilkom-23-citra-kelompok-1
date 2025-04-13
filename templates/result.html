@@ -347,3 +347,13 @@
             <img
               src="{{ url_for('static', filename=histogram_greyscale) }}"
               alt="Greyscale Histogram"
+              />
+            </div>
+            {% else %}
+            <div class="color-result">
+              <h3>Hasil Analisis Warna</h3>
+              <p>
+                Warna dominan: <strong>{{ dominant_info.color }}</strong> ({{
+                dominant_info.percent }}%)
+              </p>
+              <p>Persentase Warna:</p>
