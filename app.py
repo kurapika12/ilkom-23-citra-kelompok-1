@@ -93,4 +93,13 @@ def index():
                 else:
                     dominant_color = "Biru"
                     dominant_percent = percent_b
+
+                dominant_info = {
+                    "color": dominant_color,
+                    "percent": round(dominant_percent, 2),
+                    "blue": round(percent_b, 2),
+                    "green": round(percent_g, 2),
+                    "red": round(percent_r, 2),
+                    "is_greyscale": False
+                }
                         
