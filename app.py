@@ -102,4 +102,8 @@ def index():
                     "red": round(percent_r, 2),
                     "is_greyscale": False
                 }
-                        
+ 
+                # membuat histogram untuk masing-masing channel warna
+                colors = ('b', 'g', 'r')
+                channel_names = ('Blue', 'Green', 'Red')
+                                    
