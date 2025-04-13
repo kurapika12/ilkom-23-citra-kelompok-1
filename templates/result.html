@@ -197,3 +197,219 @@
 
       .red-dot {
         background-color: #ff0000;
+      }
+      .green-dot {
+        background-color: #00ff1a;
+      }
+      .blue-dot {
+        background-color: #4361ee;
+      }
+
+      .histograms {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-bottom: 40px;
+      }
+
+      .histogram-card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+
+      .histogram-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .histogram-card h2 {
+        color: var(--dark);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .histogram-card img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+
+      .btn-back {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+        .btn-back {
+          display: inline-block;
+          background-color: var(--primary);
+          color: white;
+          padding: 12px 25px;
+          border-radius: 50px;
+          text-decoration: none;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+          margin-top: 20px;
+          text-align: center;
+        }
+  
+        .btn-back:hover {
+          background-color: var(--secondary);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 8px rgba(67, 97, 238, 0.3);
+        }
+  
+        footer {
+          text-align: center;
+          margin-top: 50px;
+          color: #6c757d;
+          font-size: 0.9rem;
+        }
+  
+        @media (max-width: 768px) {
+          .results-section {
+            flex-direction: column;
+          }
+  
+          h1 {
+            font-size: 2rem;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <header>
+          <h1><i class="fas fa-chart-bar"></i> Hasil Analisis Histogram RGB</h1>
+          <p class="subtitle">
+            Visualisasi distribusi warna dan analisis warna dominan
+          </p>
+        </header>
+  
+        <div class="results-section">
+          <div class="main-image">
+            <h2><i clas"fas fa-image"></i> Gambar Asli</h2>
+            <img
+              src="{{ url_for('static', filename=original) }}"
+              alt="Original Image"
+            />
+          </div>
+  
+          <div class="conclusion-card">
+            <h2><i class="fas fa-chart-pie"></i> Kesimpulan Warna Dominan</h2>
+            <div class="dominant-color">
+              Warna dominan: <strong>{{ dominant_info.color }}</strong>
+            </div>
+            <p>
+              Persentase dominansi: <strong>{{ dominant_info.percent }}%</strong>
+            </p>
+  
+            <div class="color-distribution">
+              <h3><i class="fas fa-palette"></i> Distribusi Warna</h3>
+              <div class="color-item">
+                <span class="color-name"
+                  ><span class="color-dot red-dot"></span> Merah</span
+                  >
+                  <span>{{ dominant_info.red }}%</span>
+                </div>
+                <div class="color-item">
+                  <span class="color-name"
+                    ><span class="color-dot green-dot"></span> Hijau</span
+                  >
+                  <span>{{ dominant_info.green }}%</span>
+                </div>
+                <div class="color-item">
+                  <span class="color-name"
+                    ><span class="color-dot blue-dot"></span> Biru</span
+                  >
+                  <span>{{ dominant_info.blue }}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <!-- Add this where you display the dominant color information -->
+          {% if dominant_info.is_greyscale %}
+          <div class="greyscale-notice">
+            <h3>Foto Greyscale Terdeteksi</h3>
+            <p>
+              Foto ini tidak memiliki warna dominan karena merupakan gambar
+              greyscale (hitam putih).
+            </p>
+            <img
+              src="{{ url_for('static', filename=histogram_greyscale) }}"
+              alt="Greyscale Histogram"
+            />
+          </div>
+          {% else %}
+          <div class="color-result">
+            <h3>Hasil Analisis Warna</h3>
+            <p>
+              Warna dominan: <strong>{{ dominant_info.color }}</strong> ({{
+              dominant_info.percent }}%)
+            </p>
+            <p>Persentase Warna:</p>
+            <ul>
+              <li>Merah: {{ dominant_info.red }}%</li>
+              <li>Hijau: {{ dominant_info.green }}%</li>
+              <li>Biru: {{ dominant_info.blue }}%</li>
+            </ul>
+          </div>
+          {% endif %}
+    
+          <div class="histograms">
+            <div class="histogram-card">
+              <h2>
+                <i class="fas fa-water" style="color: #4361ee"></i> Histogram Blue
+                Channel
+              </h2>
+              <img
+                src="{{ url_for('static', filename=histogram_blue) }}"
+                alt="Blue Channel Histogram"
+              />
+            </div>
+    
+            <div class="histogram-card">
+              <h2>
+                <i class="fas fa-leaf" style="color: #05f474"></i> Histogram Green
+                Channel
+              </h2>
+              <img
+                src="{{ url_for('static', filename=histogram_green) }}"
+                alt="Green Channel Histogram"
+              />
+            </div>
+    
+            <div class="histogram-card">
+              <h2>
+                <i class="fas fa-fire" style="color: #f72585"></i> Histogram Red
+                Channel
+              </h2>
+              <img
+                src="{{ url_for('static', filename=histogram_red) }}"
+                alt="Red Channel Histogram"
+              />
+            </div>
+          </div>
+    
+          <div style="text-align: center">
+            <a href="/" class="btn-back"
+              ><i class="fas fa-arrow-left"></i> Kembali ke Upload</a
+            >
+          </div>
+    
+          <footer>
+            <p>© 2023 RGB Histogram Analyzer | All rights reserved</p>
+          </footer>
+        </div>
+      </body>
+    </html>
+    
