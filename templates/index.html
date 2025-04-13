@@ -215,3 +215,10 @@ uploadArea.addEventListener("click", (e) => {
     fileInput.click();
   }
 });
+
+// 2. Pastikan label tidak memicu dua kali
+const fileLabel = document.querySelector(".file-label");
+fileLabel.addEventListener("click", (e) => {
+  e.stopPropagation(); // Menghentikan event bubbling ke uploadArea
+});
+
