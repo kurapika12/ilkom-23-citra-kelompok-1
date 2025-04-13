@@ -117,4 +117,8 @@ def index():
                     hist_path = os.path.join(STATIC_FOLDER, f"histogram_{name.lower()}.png")
                     plt.savefig(hist_path)
                     plt.close()
-                                    
+ 
+                session["histogram_blue"] = "histogram_blue.png"
+                session["histogram_green"] = "histogram_green.png"
+                session["histogram_red"] = "histogram_red.png"
+                                   
