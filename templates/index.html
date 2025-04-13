@@ -235,3 +235,28 @@ uploadArea.addEventListener("dragover", (e) => {
   uploadArea.style.borderColor = "#4361ee";
   uploadArea.style.backgroundColor = "rgba(67, 97, 238, 0.05)";
 });
+
+uploadArea.addEventListener("dragleave", () => {
+  uploadArea.style.borderColor = "#dee2e6";
+  uploadArea.style.backgroundColor = "transparent";
+});
+
+uploadArea.addEventListener("drop", (e) => {
+  e.preventDefault();
+  uploadArea.style.borderColor = "#dee2e6";
+  uploadArea.style.backgroundColor = "transparent";
+
+  if (e.dataTransfer.files.length) {
+    fileInput.files = e.dataTransfer.files;
+    fileInfo.textContent = `File dipilih: ${e.dataTransfer.files[0].name}`;
+  }
+});
+
+// 5. Cegah double submit
+uploadForm.addEventListener("submit", function (e) {
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Memproses...";
+});
+</script>
+</body>
+</html>
