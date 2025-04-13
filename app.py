@@ -5,3 +5,5 @@ import matplotlib.pyplot as plt
 import os
 import glob
 
+import matplotlib
+matplotlib.use("Agg")  # Untuk menghindari masalah GUI Matplotlib
