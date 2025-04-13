@@ -49,7 +49,7 @@ def index():
 
             # Check if image is greyscale
             greyscale = is_greyscale(img)
-            
+  
             if greyscale:
                 dominant_info = {
                     "color": "Greyscale",
@@ -59,7 +59,7 @@ def index():
                     "red": 0,
                     "is_greyscale": True
                 }
-                
+    
                 # Create histogram for greyscale image
                 plt.figure()
                 plt.hist(img.ravel(), bins=256, range=[0, 256], color='gray')
@@ -69,20 +69,20 @@ def index():
                 hist_path = os.path.join(STATIC_FOLDER, "histogram_greyscale.png")
                 plt.savefig(hist_path)
                 plt.close()
-                
+                   
                 session["histogram_greyscale"] = "histogram_greyscale.png"
             else:
                 # Untuk Analisis warna dominan
                 total_b = np.sum(img[:,:,0])
                 total_g = np.sum(img[:,:,1])
                 total_r = np.sum(img[:,:,2])
-                
+   
                 # Untuk Menghitung persentase
                 total_all = total_b + total_g + total_r
                 percent_b = (total_b / total_all) * 100
                 percent_g = (total_g / total_all) * 100
                 percent_r = (total_r / total_all) * 100
-                
+   
                 # Menentukan warna dominan
                 if total_r > total_g and total_r > total_b:
                     dominant_color = "Merah"
@@ -102,11 +102,11 @@ def index():
                     "red": round(percent_r, 2),
                     "is_greyscale": False
                 }
-
+ 
                 # membuat histogram untuk masing-masing channel warna
                 colors = ('b', 'g', 'r')
                 channel_names = ('Blue', 'Green', 'Red')
-                
+   
                 # membuat 3 histogram terpisah
                 for i, (col, name) in enumerate(zip(colors, channel_names)):
                     plt.figure()
@@ -117,7 +117,7 @@ def index():
                     hist_path = os.path.join(STATIC_FOLDER, f"histogram_{name.lower()}.png")
                     plt.savefig(hist_path)
                     plt.close()
-
+ 
                 session["histogram_blue"] = "histogram_blue.png"
                 session["histogram_green"] = "histogram_green.png"
                 session["histogram_red"] = "histogram_red.png"
@@ -128,7 +128,7 @@ def index():
             return redirect(url_for("result"))
 
     return render_template("index.html")
-
+ 
 @app.route("/result")
 def result():
     return render_template("result.html",
@@ -138,6 +138,6 @@ def result():
                            histogram_red=session.get("histogram_red", None),
                            histogram_greyscale=session.get("histogram_greyscale", None),
                            dominant_info=session.get("dominant_info", {}))
-
+ 
 if __name__ == "__main__":
-    app.run()
+    app.run()                                 
