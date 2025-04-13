@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Program Kelompok 1</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Analisis Warna RGB menggunakan Histogram</h1>
+        <p class="subtitle">
+          Upload gambar untuk menganalisis distribusi warna RGB
+        </p>
+      </header>
+
+      <div class="upload-card">
+        <form method="post" enctype="multipart/form-data" id="uploadForm">
+          <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📊</div>
+            <p>Drag & drop gambar Anda di sini atau</p>
+            <label for="image" class="file-label" id="fileLabel"
+              >Pilih File</label
+            >
+            <input
+              type="file"
+              name="image"
+              id="image"
+              class="file-input"
+              accept="image/*"
+              required
+            />
+            <div class="file-info" id="fileInfo">
+              Format yang didukung: JPG, PNG, JPEG
+            </div>
+          </div>
+          <button type="submit" class="submit-btn" id="submitBtn">
+            Analisis Gambar
+          </button>
+        </form>
+      </div>
+
+      <footer>
+        <p>© 2023 RGB Histogram Analyzer | Kelompok 1</p>
+      </footer>
+    </div>
+    <script src="{{ url_for('static', filename='file.js') }}"></script>
+  </body>
+</html>
