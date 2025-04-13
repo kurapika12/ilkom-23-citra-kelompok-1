@@ -121,4 +121,11 @@ def index():
                 session["histogram_blue"] = "histogram_blue.png"
                 session["histogram_green"] = "histogram_green.png"
                 session["histogram_red"] = "histogram_red.png"
+
+            session["original"] = "original.png"
+            session["dominant_info"] = dominant_info
+
+            return redirect(url_for("result"))
+
+    return render_template("index.html")
                                    
