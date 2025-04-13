@@ -1,8 +1,8 @@
-# Histogram dan Peningkatan Citra (Image Enhancement)
+# Histogram Citra (Image Histogram Analysis)
 
 ## 📌 Deskripsi Proyek
 
-Proyek ini adalah aplikasi berbasis web yang menggunakan **Flask** dan **OpenCV** untuk menganalisis histogram citra serta meningkatkan kualitas gambar dengan teknik **Histogram Equalization**. Pengguna bisa mengunggah gambar, melihat histogramnya, melakukan enhancement, serta membandingkan gambar sebelum dan sesudah proses.
+Proyek ini adalah aplikasi berbasis web yang menggunakan **Flask** dan **OpenCV** untuk menganalisis histogram citra. Pengguna bisa mengunggah gambar, melihat histogram RGB-nya, serta mendapatkan informasi warna dominan dari gambar tersebut. Tidak terdapat fitur peningkatan kualitas gambar.
 
 ## 🛠 Teknologi yang Digunakan
 
@@ -69,9 +69,8 @@ Aplikasi akan berjalan di `http://127.0.0.1:5000/`
 
 ✅ **Upload Gambar** - Pengguna bisa mengunggah gambar berformat JPG/PNG.<br>
 ✅ **Tampilkan Histogram** - Histogram gambar asli bisa ditampilkan.<br>
-✅ **Histogram Equalization** - Proses peningkatan kualitas gambar dengan teknik equalization.<br>
-✅ **Perbandingan Gambar** - Menampilkan sebelum & sesudah enhancement.<br>
-✅ **Download Gambar** - Hasil gambar bisa diunduh.
+✅ **Analisis Warna Dominan** - Menampilkan warna dominan dan persentasenya.<br>
+✅ **Perbandingan hasil histogram** - Menampilkan hasil grafik histogram
 
 ## 📸 Contoh Penggunaan
 
