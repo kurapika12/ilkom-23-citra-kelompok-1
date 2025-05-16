@@ -172,6 +172,10 @@ cython_debug/
 
 # File hasil upload
 uploads/
+uploads/*png
+uploads/*jpg
+uploads/*jpeg
+uploads/*gif
 
 # File gambar sementara atau cache
 *.jpg
