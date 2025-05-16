@@ -177,19 +177,13 @@ uploads/*jpg
 uploads/*jpeg
 uploads/*gif
 
-# File gambar sementara atau cache
-*.jpg
-*.jpeg
-*.bmp
-*.gif
-
 # Hasil debug/error log dari Flask
 error.log
 debug.log
 flask.log
 
 # Ignore file hasil pemrosesan gambar
-static/*.png
-static/*.jpg
-static/*.jpeg
-static/*.gif
+static/*png
+static/*jpg
+static/*jpeg
+static/*gif
