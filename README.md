@@ -79,7 +79,7 @@ pip install -r requirements.txt
 ### 4️⃣ **Jalankan Aplikasi**
 
 ```bash
-python app.py
+python run.py
 ```
 
 Aplikasi akan berjalan di `http://127.0.0.1:5000/`
@@ -90,7 +90,6 @@ Aplikasi akan berjalan di `http://127.0.0.1:5000/`
 ![Halaman Awal](img/HalamanAwal.png)
 **CONTOH HALAMAN HASIL**
 ![Halaman Hasil](img/HalamanHasil.png)
-
 
 ## ⚙️ Fitur Utama
 
