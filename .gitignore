@@ -183,6 +183,7 @@ debug.log
 flask.log
 
 # Ignore file hasil pemrosesan gambar
+static/
 static/*png
 static/*jpg
 static/*jpeg
