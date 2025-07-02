@@ -79,4 +79,33 @@ def index():
                 colors = ('b', 'g', 'r')
                 channel_names = ('Blue', 'Green', 'Red')
 
-               
+                for i, (col, name) in enumerate(zip(colors, channel_names)):
+                    plt.figure()
+                    plt.hist(img[:, :, i].ravel(), bins=256, range=[0, 256], color=col)
+                    plt.title(f'Histogram Channel {name}')
+                    plt.xlabel('Pixel Value')
+                    plt.ylabel('Frequency')
+                    hist_path = os.path.join(STATIC_FOLDER, f"histogram_{name.lower()}.png")
+                    plt.savefig(hist_path)
+                    plt.close()
+
+                session["histogram_blue"] = "histogram_blue.png"
+                session["histogram_green"] = "histogram_green.png"
+                session["histogram_red"] = "histogram_red.png"
+
+            session["original"] = "original.png"
+            session["dominant_info"] = dominant_info
+
+            return redirect(url_for("main.result"))
+
+    return render_template("index.html")
+
+@main.route("/result")
+def result():
+    return render_template("result.html",
+                           original=session.get("original"),
+                           histogram_blue=session.get("histogram_blue", None),
+                           histogram_green=session.get("histogram_green", None),
+                           histogram_red=session.get("histogram_red", None),
+                           histogram_greyscale=session.get("histogram_greyscale", None),
+                           dominant_info=session.get("dominant_info", {}))
